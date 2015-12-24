@@ -2,7 +2,9 @@ defmodule TqdmTest do
   use ExUnit.Case
   doctest Tqdm
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "tqdm" do
+    for _ <- Tqdm.tqdm(1..1000) do
+      :timer.sleep(10)
+    end
   end
 end
