@@ -4,6 +4,8 @@
 
 Tqdm easily adds a CLI progress bar to any enumerable.
 
+![tqdm](http://i.imgur.com/D4ZILgE.gif)
+
 A (partial) port of Python's [tqdm](https://github.com/tqdm/tqdm) to Elixir. Thanks noamraph and all other contributors for the original library!
 
 Just wrap Lists, Maps, Streams, or anything else that implements Enumerable with `Tqdm.tqdm`:
