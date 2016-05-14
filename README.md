@@ -1,38 +1,43 @@
-# DOCS IN PROGRESS!
+[![Build Status](https://travis-ci.org/antipax/tqdm_elixir.svg?branch=master)](https://travis-ci.org/antipax/tqdm_elixir) [![Coverage Status](https://coveralls.io/repos/github/antipax/tqdm_elixir/badge.svg?branch=master)](https://coveralls.io/github/antipax/tqdm_elixir?branch=master) [![Inline docs](http://inch-ci.org/github/antipax/tqdm_elixir.svg?branch=master)](http://inch-ci.org/github/antipax/tqdm_elixir)
 
 # Tqdm
 
-Add a progress bar to your enumerables in a second.
+Tqdm easily adds a CLI progress bar to any enumerable.
 
 A (partial) port of Python's [tqdm](https://github.com/tqdm/tqdm) to Elixir. Thanks noamraph and all other contributors for the original library!
 
-Wrap your favorite enumerables (i.e. Lists, Maps, Streams, anything that implements Enumerable!) with tqdm, and see progress in detail!
-
-For example:
+Just wrap Lists, Maps, Streams, or anything else that implements Enumerable with `Tqdm.tqdm`:
 
 ```elixir
 for _ <- Tqdm.tqdm(1..1000) do
   :timer.sleep(10)
 end
-```
 
-will give you a nice progress bar like:
+# or
 
-```
-|######----| 665/1000 67.0% [elapsed: 00:00:10.522247 left: 00:00:05, 63.2 iters/sec]
+1..1000
+|> Tqdm.tqdm()
+|> Enum.map(fn _ -> :timer.sleep(10) end)
+
+# or even...
+
+1..1000
+|> Stream.map(fn -> :timer.sleep(10) end)
+|> Tqdm.tqdm()
+|> Stream.run()
+
+# |###-------| 392/1000 39.0% [elapsed: 00:00:04.627479 left: 00:00:07, 84.71 iters/sec]
 ```
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
   1. Add tqdm to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:tqdm, "~> 0.0.1"}]
+          [{:tqdm, "~> 0.0.2"}]
         end
 
-  2. Ensure tqdm is started before your application:
+  2. Ensure tqdm is added to your list of applications:
 
         def application do
           [applications: [:tqdm]]
