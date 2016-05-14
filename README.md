@@ -31,7 +31,7 @@ end
 # |###-------| 392/1000 39.0% [elapsed: 00:00:04.627479 left: 00:00:07, 84.71 iters/sec]
 ```
 
-Full documentation can be found [here](https://hexdocs.pm/tqdm/0.0.2)
+Full documentation can be found [here](https://hexdocs.pm/tqdm/0.0.2).
 
 ## Installation
 
