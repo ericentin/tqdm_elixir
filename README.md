@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/antipax/tqdm_elixir.svg?branch=master)](https://travis-ci.org/antipax/tqdm_elixir) [![Coverage Status](https://coveralls.io/repos/github/antipax/tqdm_elixir/badge.svg?branch=master)](https://coveralls.io/github/antipax/tqdm_elixir?branch=master) [![Inline docs](http://inch-ci.org/github/antipax/tqdm_elixir.svg?branch=master)](http://inch-ci.org/github/antipax/tqdm_elixir)
+[![Build Status](https://travis-ci.org/antipax/tqdm_elixir.svg?branch=master)](https://travis-ci.org/antipax/tqdm_elixir) [![Coverage Status](https://coveralls.io/repos/github/antipax/tqdm_elixir/badge.svg?branch=master)](https://coveralls.io/github/antipax/tqdm_elixir?branch=master) [![Inline docs](http://inch-ci.org/github/antipax/tqdm_elixir.svg?branch=master)](http://inch-ci.org/github/antipax/tqdm_elixir) [![Hex.pm package version](https://img.shields.io/hexpm/v/tqdm.svg)](https://hex.pm/packages/tqdm) [![Hex.pm package license](https://img.shields.io/hexpm/l/tqdm.svg)](https://github.com/antipax/tqdm_elixir/blob/master/LICENSE)
 
 # Tqdm
 
