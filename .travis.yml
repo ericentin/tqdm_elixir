@@ -1,15 +1,17 @@
 language: elixir
-elixir:
-  - 1.2.5
-otp_release:
-  - 18.3
+matrix:
+  include:
+    - otp_release: 18.3
+      elixir: 1.2.5
+    - otp_release: 20.0
+      elixir: 1.5
 sudo: false
 env:
   - MIX_ENV=test
   - MIX_ENV=test ELIXIR_ERL_OPTIONS="+T 9"
 before_script:
+  - mix deps.get
   - mix compile --warnings-as-errors
-  - mix dialyzer.plt
 script:
   - mix coveralls.travis
   - mix dialyzer --halt-exit-status
@@ -19,6 +21,5 @@ after_script:
   - MIX_ENV=docs mix inch.report
 cache:
   directories:
-    - .dialyxir
     - _build
     - deps

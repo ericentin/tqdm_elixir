@@ -24,8 +24,8 @@ end
 # or even...
 
 1..1000
-|> Stream.map(fn -> :timer.sleep(10) end)
-|> Tqdm.tqdm()
+|> Stream.map(fn _ -> :timer.sleep(10) end)
+|> Tqdm.tqdm(total: 1000)
 |> Stream.run()
 
 # |###-------| 392/1000 39.0% [elapsed: 00:00:04.627479 left: 00:00:07, 84.71 iters/sec]
