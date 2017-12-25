@@ -37,13 +37,16 @@ Full documentation can be found [here](https://hexdocs.pm/tqdm/0.0.2).
 
   1. Add tqdm to your list of dependencies in `mix.exs`:
 
-        def deps do
-          [{:tqdm, "~> 0.0.2"}]
-        end
+```elixir
+    def deps do
+      [{:tqdm, "~> 0.0.2"}]
+    end
+```
 
   2. Ensure tqdm is added to your list of applications:
 
-        def application do
-          [applications: [:tqdm]]
-        end
-
+```elixir
+    def application do
+      [applications: [:tqdm]]
+    end
+```
