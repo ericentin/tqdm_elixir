@@ -80,7 +80,7 @@ defmodule Tqdm do
   @spec tqdm(Enumerable.t, options) :: Enumerable.t
   def tqdm(enumerable, options \\ []) do
     start_fun = fn ->
-      now = :erlang.monotonic_time()
+      now = System.monotonic_time()
 
       get_total = fn -> Enum.count(enumerable) end
 
@@ -97,7 +97,7 @@ defmodule Tqdm do
         min_interval:
           options
           |> Keyword.get(:min_interval, 100)
-          |> :erlang.convert_time_unit(:milli_seconds, :native),
+          |> System.convert_time_unit(:milliseconds, :native),
         min_iterations: Keyword.get(options, :min_iterations, 1),
         total_segments: Keyword.get(options, :total_segments, 10)
       }
@@ -110,7 +110,7 @@ defmodule Tqdm do
   defp prefix(description), do: description <> ": "
 
   defp do_tqdm(element, %{n: 0} = state) do
-    {[element], %{print_status(state, :erlang.monotonic_time()) | n: 1}}
+    {[element], %{print_status(state, System.monotonic_time()) | n: 1}}
   end
 
   defp do_tqdm(
@@ -120,7 +120,7 @@ defmodule Tqdm do
     do: {[element], %{state | n: n + 1}}
 
   defp do_tqdm(element, state) do
-    now = :erlang.monotonic_time()
+    now = System.monotonic_time()
 
     time_diff =
       now - state.last_print_time
@@ -129,7 +129,7 @@ defmodule Tqdm do
       if time_diff >= state.min_interval do
         Map.merge(print_status(state, now), %{
           last_print_n: state.n,
-          last_print_time: :erlang.monotonic_time()
+          last_print_time: System.monotonic_time()
         })
       else
         state
@@ -139,7 +139,7 @@ defmodule Tqdm do
   end
 
   defp do_tqdm_after(state) do
-    state = print_status(state, :erlang.monotonic_time())
+    state = print_status(state, System.monotonic_time())
 
     finish =
       if state.clear do
@@ -168,7 +168,7 @@ defmodule Tqdm do
 
   defp format_status(state, now) do
     elapsed =
-      :erlang.convert_time_unit(now - state.start_time, :native, :micro_seconds)
+      System.convert_time_unit(now - state.start_time, :native, :microseconds)
 
     elapsed_str = format_interval(elapsed, false)
 
