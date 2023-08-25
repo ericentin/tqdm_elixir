@@ -97,7 +97,7 @@ defmodule Tqdm do
         min_interval:
           options
           |> Keyword.get(:min_interval, 100)
-          |> System.convert_time_unit(:milliseconds, :native),
+          |> System.convert_time_unit(:millisecond, :native),
         min_iterations: Keyword.get(options, :min_iterations, 1),
         total_segments: Keyword.get(options, :total_segments, 10)
       }
@@ -168,7 +168,7 @@ defmodule Tqdm do
 
   defp format_status(state, now) do
     elapsed =
-      System.convert_time_unit(now - state.start_time, :native, :microseconds)
+      System.convert_time_unit(now - state.start_time, :native, :microsecond)
 
     elapsed_str = format_interval(elapsed, false)
 
